@@ -1,0 +1,589 @@
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   target/cljsbuild/public/js/out/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+  [36m15[0m  [36m  #?(:cljs {:tag boolean})[0m
+  [36m16[0m  [36m  (let [x (if (seq? x) (first x) x)][0m
+  [36m17[0m  [36m    (map? x)))[0m
+  [36m18[0m  [36m[0m
+  [33m19[0m  [1m(defn ident?[0m
+  [0m  [0m  [33m^--- ident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+  [36m20[0m  [36m  "Returns true if x is an ident."[0m
+  [36m21[0m  [36m  #?(:cljs {:tag boolean})[0m
+  [36m22[0m  [36m  [x][0m
+  [36m23[0m  [36m  (and (vector? x)[0m
+  [36m24[0m  [36m    (== 2 (count x))[0m
+
+[36m----  Compiler Warning : Please see target/cljsbuild/public/js/out/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   target/cljsbuild/public/js/out/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+  [36m 5[0m  [36m            [cljsjs.react.dom][0m
+  [36m 6[0m  [36m            [om.util :as util][0m
+  [36m 7[0m  [36m            [goog.object :as gobj]))[0m
+  [36m 8[0m  [36m[0m
+  [33m 9[0m  [1m(dom/gen-react-dom-fns)[0m
+  [0m  [0m  [33m^--- Can't take value of macro cljs.core/use[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defn wrap-form-element [ctor display-name][0m
+  [36m12[0m  [36m  (js/React.createFactory[0m
+  [36m13[0m  [36m    (js/React.createClass[0m
+  [36m14[0m  [36m      #js[0m
+
+[36m----  Compiler Warning : Please see target/cljsbuild/public/js/out/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   target/cljsbuild/public/js/out/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+  [36m 5[0m  [36m            [cljsjs.react.dom][0m
+  [36m 6[0m  [36m            [om.util :as util][0m
+  [36m 7[0m  [36m            [goog.object :as gobj]))[0m
+  [36m 8[0m  [36m[0m
+  [33m 9[0m  [1m(dom/gen-react-dom-fns)[0m
+  [0m  [0m  [33m^--- use already refers to: cljs.core/use being replaced by: om.dom/use[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defn wrap-form-element [ctor display-name][0m
+  [36m12[0m  [36m  (js/React.createFactory[0m
+  [36m13[0m  [36m    (js/React.createClass[0m
+  [36m14[0m  [36m      #js[0m
+
+[36m----  Compiler Warning : Please see target/cljsbuild/public/js/out/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   target/cljsbuild/public/js/out/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+  [36m338[0m  [36m  "Construct a UUID from a string."[0m
+  [36m339[0m  [36m  [s][0m
+  [36m340[0m  [36m  (ty/uuid s))[0m
+  [36m341[0m  [36m[0m
+  [33m342[0m  [1m(defn uuid?[0m
+  [0m   [0m  [33m^--- uuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+  [36m343[0m  [36m  "Returns true if x is a transit UUID value, false otherwise."[0m
+  [36m344[0m  [36m  [x][0m
+  [36m345[0m  [36m  (or (ty/isUUID x) (instance? UUID x)))[0m
+  [36m346[0m  [36m[0m
+  [36m347[0m  [36m(defn binary[0m
+
+[36m----  Compiler Warning : Please see target/cljsbuild/public/js/out/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:11  column:24  ----[0m
+
+  [1mUse of undeclared Var krypto.core/HellowWorld[0m
+
+  [36m 7[0m  [36m  Object[0m
+  [36m 8[0m  [36m  (render [this][0m
+  [36m 9[0m  [36m          (dom/div nil "Hello, world! (also Krypto)")))[0m
+  [36m10[0m  [36m[0m
+  [33m11[0m  [1m(def hello (om/factory HellowWorld))[0m
+  [0m  [0m  [33m                       ^--- Use of undeclared Var krypto.core/HellowWorld[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(js.ReactDom.render (hello) (gdom/getElement "app"))[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m;; (defn init! [][0m
+  [36m16[0m  [36m;;   (let [content (js/document.getElementById "app")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.213 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+Figwheel: Can't open  ("target/cljsbuild/public/js/out/om/util.cljc" 19 1) No :open-file-command supplied in the config.
+Figwheel: Can't open  ("target/cljsbuild/public/js/out/om/dom.cljs" 9 1) No :open-file-command supplied in the config.
+Figwheel: Can't open  ("target/cljsbuild/public/js/out/om/dom.cljs" 9 1) No :open-file-command supplied in the config.
+Figwheel: Can't open  ("target/cljsbuild/public/js/out/om/util.cljc" 19 1) No :open-file-command supplied in the config.
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.159 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.102 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.998 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.713 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/mount-components[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/mount-components)[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/mount-components[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:14  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m10[0m  [36m  :on-jsload core/mount-components)[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(devtools/install!)[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.734 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:15  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init![0m
+
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [33m15[0m  [1m(core/init!)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.75 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.545 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.733 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.587 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.666 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.655 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.175 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.501 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.666 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.684 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.739 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.686 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.649 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.733 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.562 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.682 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.608 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.53 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc   line:19  column:1  ----[0m
+
+  [1mident? already refers to: cljs.core/ident? being replaced by: om.util/ident?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/util.cljc  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs   line:342  column:1  ----[0m
+
+  [1muuid? already refers to: cljs.core/uuid? being replaced by: cognitect.transit/uuid?[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/com/cognitect/transit-cljs/0.8.237/transit-cljs-0.8.237.jar!/cognitect/transit.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1mCan't take value of macro cljs.core/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[36m----  Compiler Warning on   file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs   line:9  column:1  ----[0m
+
+  [1muse already refers to: cljs.core/use being replaced by: om.dom/use[0m
+
+[36m----  Compiler Warning : Please see file:/C:/Users/Kaan/.m2/repository/org/omcljs/om/1.0.0-alpha34/om-1.0.0-alpha34.jar!/om/dom.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.823 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.703 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.703 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:3  ----[0m
+
+  [1mUse of undeclared Var krypto.app/on-jsload[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  on-jsload core/mount-root[0m
+  [0m  [0m  [33m  ^--- Use of undeclared Var krypto.app/on-jsload[0m
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m;(core/init!)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.86 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.639 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.713 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/init[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/init[0m
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m(core/init)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:15  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [33m15[0m  [1m(core/init)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.688 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.686 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.71 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.655 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.645 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.626 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.731 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.599 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.665 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.534 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.018 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.625 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.014 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.851 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.553 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.841 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
