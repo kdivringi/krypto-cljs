@@ -587,3 +587,69 @@ notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.841 seconds.[0m
 notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.492 seconds.[0m
+[36m----  Could not Analyze  src/cljs/krypto/core.cljs   line:38  column:1  ----[0m
+
+  [1mclojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+
+  [36m36[0m  [36m                      "Click me!")))))[0m
+  [36m37[0m  [36m[0m
+  [33m38[0m  [1m(defui Cards[0m
+  [0m  [0m  [33m^--- clojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+  [36m39[0m  [36m  Object[0m
+  [36m40[0m  [36m  render [this][0m
+  [36m41[0m  [36m  (apply dom/ul nil (map dom/li nil (om.props this)))) ; TODO: keyfn[0m
+
+[36m----  Analysis Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.506 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:38  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 38 and column 1[0m
+
+  [36m36[0m  [36m                      "Click me!")))))[0m
+  [36m37[0m  [36m[0m
+  [33m38[0m  [1m(defui Cards[0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 38 and column 1[0m
+  [36m39[0m  [36m  Object[0m
+  [36m40[0m  [36m  render [this][0m
+  [36m41[0m  [36m  (apply dom/ul nil (map dom/li nil (om.props this))) ; TODO: keyfn[0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.492 seconds.[0m
+[36m----  Could not Analyze  src/cljs/krypto/core.cljs   line:38  column:1  ----[0m
+
+  [1mclojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+
+  [36m36[0m  [36m                      "Click me!")))))[0m
+  [36m37[0m  [36m[0m
+  [33m38[0m  [1m(defui Cards[0m
+  [0m  [0m  [33m^--- clojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+  [36m39[0m  [36m  Object[0m
+  [36m40[0m  [36m  render [this][0m
+  [36m41[0m  [36m  (apply dom/ul nil (map dom/li nil (om.props this)))) ; TODO: keyfn[0m
+
+[36m----  Analysis Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.473 seconds.[0m
+[36m----  Could not Analyze  src/cljs/krypto/core.cljs   line:38  column:1  ----[0m
+
+  [1mclojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+
+  [36m36[0m  [36m                      "Click me!")))))[0m
+  [36m37[0m  [36m[0m
+  [33m38[0m  [1m(defui Cards[0m
+  [0m  [0m  [33m^--- clojure.lang.PersistentVector cannot be cast to clojure.lang.Named[0m
+  [36m39[0m  [36m  Object[0m
+  [36m40[0m  [36m  render [this][0m
+  [36m41[0m  [36m  (apply dom/ul nil (map (fn [c] (dom/li nil (str (:value c)))) (om.props this)))) ; TODO: keyfn[0m
+
+[36m----  Analysis Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.833 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.841 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js

@@ -35,13 +35,20 @@
                              (om/transact! this '[(increment)]))}
                       "Click me!")))))
 
+(defui Cards
+  Object
+  (render [this]
+  (apply dom/ul nil (map (fn [c] (dom/li nil (str (:value c)))) (om/props this))))) ; TODO: keyfn
+
+(def cards (om/factory Cards))
+
 (defui ^:once App
   Object
   (render [this]
           (dom/div {:className "App"}
                    (dom/h1 {:className "Title"} "Krypto!")
                    (dom/p {:className "Lead"} "Use the cards")
-                   (dom/p nil (apply str (map :value (:cards (om/props this))))))))
+                   (cards (:cards (om/props this))))))
 
 (defonce reconciler
   (om/reconciler {:state app-state
