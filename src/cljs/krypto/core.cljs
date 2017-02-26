@@ -40,14 +40,16 @@
   Object
   (render [this]
           (let [{:keys [value] :as c} (om/props this)]
-            (dom/li nil value))))
+            (dom/li #js {:className "card"} value))))
 
 (def playcard (om/factory PlayCard {:keyfn :value}))
 
 (defui Cards
   Object
   (render [this]
-          (apply dom/ul nil (map playcard (om/props this)))))
+          (apply dom/ul #js {:className "hlist"}
+                 (dom/li #js {:className "card-first"} "Cards:")
+                 (map playcard (om/props this)))))
 
 (def cards (om/factory Cards))
 
