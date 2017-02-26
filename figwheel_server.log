@@ -1105,3 +1105,288 @@ notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.597 seconds.[0m
 notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.623 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:59  column:26  ----[0m
+
+  [1mUse of undeclared Var krypto.core/Counter[0m
+
+  [36m55[0m  [36m(def reconciler[0m
+  [36m56[0m  [36m  (om/reconciler {:state app-state[0m
+  [36m57[0m  [36m                  :parser (om/parser {:read read :mutate mutate})}))[0m
+  [36m58[0m  [36m[0m
+  [33m59[0m  [1m(om/add-root! reconciler Counter (gdom/getElement "app"))[0m
+  [0m  [0m  [33m                         ^--- Use of undeclared Var krypto.core/Counter[0m
+  [36m60[0m  [36m;; (defn init [][0m
+  [36m61[0m  [36m;;   (if (nil? @app-state)[0m
+  [36m62[0m  [36m;;     (let [target (gdom/getElement "app")][0m
+  [36m63[0m  [36m;;       (om/add-root! reconciler App target)[0m
+  [36m64[0m  [36m;;       (reset! app-state {:cards (into [] (rest static_cards)) :board [(first static_cards)]}))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/init[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/init[0m
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m(core/init)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:15  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [33m15[0m  [1m(core/init)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.705 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:10  column:14  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m 6[0m  [36m(enable-console-print!)[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(figwheel/watch-and-reload[0m
+  [36m 9[0m  [36m  :websocket-url "ws://localhost:3449/figwheel-ws"[0m
+  [33m10[0m  [1m  :on-jsload core/init[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var krypto.core/init[0m
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m(core/init)[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:15  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [33m15[0m  [1m(core/init)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.654 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.502 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/krypto/app.cljs   line:15  column:2  ----[0m
+
+  [1mUse of undeclared Var krypto.core/init[0m
+
+  [36m11[0m  [36m  )[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(devtools/install!)[0m
+  [36m14[0m  [36m[0m
+  [33m15[0m  [1m(core/init)[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var krypto.core/init[0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/krypto/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.528 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\app.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.453 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:59  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 59 and column 1[0m
+
+  [36m57[0m  [36m                  :parser (om/parser {:read read :mutate mutate})}))[0m
+  [36m58[0m  [36m[0m
+  [33m59[0m  [1m(defn init [][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 59 and column 1[0m
+  [36m60[0m  [36m  (om/add-root! reconciler App (gdom/getElement "app"))[0m
+  [36m61[0m  [36m[0m
+  [36m62[0m  [36m;; (defn init [][0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.59 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:6  column:30  ----[0m
+
+  [1mUse of undeclared Var krypto.core/static_cards[0m
+
+  [36m 2[0m  [36m  (:require [goog.dom :as gdom][0m
+  [36m 3[0m  [36m            [om.next :as om :refer-macros [defui]][0m
+  [36m 4[0m  [36m            [om.dom :as dom]))[0m
+  [36m 5[0m  [36m[0m
+  [33m 6[0m  [1m(def app-state (atom {:cards static_cards :board []}))[0m
+  [0m  [0m  [33m                             ^--- Use of undeclared Var krypto.core/static_cards[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(def static_cards [{:value 3} {:value 5} {:value 10} {:value 4} {:value 1}])[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn read [{:keys [state] :as env} key params][0m
+  [36m11[0m  [36m  (let [st @state][0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.694 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.577 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:28  column:13  ----[0m
+
+  [1mUse of undeclared Var krypto.core/state[0m
+
+  [36m25[0m  [36m(defn play-card [value][0m
+  [36m26[0m  [36m  (let [new-board (conj (:board @app-state) value)[0m
+  [36m27[0m  [36m        new-cards (into [] (remove (partial = value) (:cards @app-state)))][0m
+  [33m28[0m  [1m    (reset! state {:cards new-cards :board new-board})))[0m
+  [0m  [0m  [33m            ^--- Use of undeclared Var krypto.core/state[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defui Cards[0m
+  [36m31[0m  [36m  static om/IQuery[0m
+  [36m32[0m  [36m  (query [this][0m
+  [36m33[0m  [36m         [:cards])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.608 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:61  column:36  ----[0m
+
+  [1mUnmatched delimiter )[0m
+
+  [36m60[0m  [36m(def reconciler[0m
+  [33m61[0m  [1m  (om/reconciler {:state app-state)[0m
+  [0m  [0m  [33m                                   ^--- Unmatched delimiter )[0m
+  [36m62[0m  [36m[0m
+  [36m63[0m  [36m(defn init [][0m
+  [36m64[0m  [36m  (om/add-root! reconciler App (gdom/getElement "app")))[0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:28  column:13  ----[0m
+
+  [1mUse of undeclared Var krypto.core/state[0m
+
+  [36m25[0m  [36m(defn play-card [value][0m
+  [36m26[0m  [36m  (let [new-board (conj (:board @app-state) value)[0m
+  [36m27[0m  [36m        new-cards (into [] (remove (partial = value) (:cards @app-state)))][0m
+  [33m28[0m  [1m    (reset! state {:cards new-cards :board new-board})))[0m
+  [0m  [0m  [33m            ^--- Use of undeclared Var krypto.core/state[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defui Cards[0m
+  [36m31[0m  [36m  static om/IQuery[0m
+  [36m32[0m  [36m  (query [this][0m
+  [36m33[0m  [36m         [:cards])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.455 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:61  column:36  ----[0m
+
+  [1mUnmatched delimiter )[0m
+
+  [36m60[0m  [36m(def reconciler[0m
+  [33m61[0m  [1m  (om/reconciler {:state app-state)[0m
+  [0m  [0m  [33m                                   ^--- Unmatched delimiter )[0m
+  [36m62[0m  [36m[0m
+  [36m63[0m  [36m(defn init [][0m
+  [36m64[0m  [36m  (om/add-root! reconciler App (gdom/getElement "app")))[0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:28  column:13  ----[0m
+
+  [1mUse of undeclared Var krypto.core/state[0m
+
+  [36m25[0m  [36m(defn play-card [value][0m
+  [36m26[0m  [36m  (let [new-board (conj (:board @app-state) value)[0m
+  [36m27[0m  [36m        new-cards (into [] (remove (partial = value) (:cards @app-state)))][0m
+  [33m28[0m  [1m    (reset! state {:cards new-cards :board new-board})))[0m
+  [0m  [0m  [33m            ^--- Use of undeclared Var krypto.core/state[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defui Cards[0m
+  [36m31[0m  [36m  ;; static om/IQuery[0m
+  [36m32[0m  [36m  ;; (query [this][0m
+  [36m33[0m  [36m  ;;        [:cards])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.468 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:61  column:36  ----[0m
+
+  [1mUnmatched delimiter )[0m
+
+  [36m60[0m  [36m(def reconciler[0m
+  [33m61[0m  [1m  (om/reconciler {:state app-state)[0m
+  [0m  [0m  [33m                                   ^--- Unmatched delimiter )[0m
+  [36m62[0m  [36m[0m
+  [36m63[0m  [36m(defn init [][0m
+  [36m64[0m  [36m  (om/add-root! reconciler App (gdom/getElement "app")))[0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:28  column:13  ----[0m
+
+  [1mUse of undeclared Var krypto.core/state[0m
+
+  [36m25[0m  [36m(defn play-card [value][0m
+  [36m26[0m  [36m  (let [new-board (conj (:board @app-state) value)[0m
+  [36m27[0m  [36m        new-cards (into [] (remove (partial = value) (:cards @app-state)))][0m
+  [33m28[0m  [1m    (reset! state {:cards new-cards :board new-board})))[0m
+  [0m  [0m  [33m            ^--- Use of undeclared Var krypto.core/state[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defui Cards[0m
+  [36m31[0m  [36m  ;; static om/IQuery[0m
+  [36m32[0m  [36m  ;; (query [this][0m
+  [36m33[0m  [36m  ;;        [:cards])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.474 seconds.[0m
+[36m----  Could not Read  src/cljs/krypto/core.cljs   line:61  column:36  ----[0m
+
+  [1mUnmatched delimiter )[0m
+
+  [36m60[0m  [36m(def reconciler[0m
+  [33m61[0m  [1m  (om/reconciler {:state app-state))[0m
+  [0m  [0m  [33m                                   ^--- Unmatched delimiter )[0m
+  [36m62[0m  [36m[0m
+  [36m63[0m  [36m(defn init [][0m
+  [36m64[0m  [36m  (om/add-root! reconciler App (gdom/getElement "app")))[0m
+
+[36m----  Reader Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/krypto/core.cljs   line:28  column:13  ----[0m
+
+  [1mUse of undeclared Var krypto.core/state[0m
+
+  [36m25[0m  [36m(defn play-card [value][0m
+  [36m26[0m  [36m  (let [new-board (conj (:board @app-state) value)[0m
+  [36m27[0m  [36m        new-cards (into [] (remove (partial = value) (:cards @app-state)))][0m
+  [33m28[0m  [1m    (reset! state {:cards new-cards :board new-board})))[0m
+  [0m  [0m  [33m            ^--- Use of undeclared Var krypto.core/state[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defui Cards[0m
+  [36m31[0m  [36m  ;; static om/IQuery[0m
+  [36m32[0m  [36m  ;; (query [this][0m
+  [36m33[0m  [36m  ;;        [:cards])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/krypto/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.658 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.577 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js

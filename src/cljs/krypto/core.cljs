@@ -3,9 +3,10 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]))
 
-(defonce app-state (atom nil))
 
 (def static_cards [{:value 3} {:value 5} {:value 10} {:value 4} {:value 1}])
+
+(def app-state (atom {:cards static_cards :board []}))
 
 (defn read [{:keys [state] :as env} key params]
   (let [st @state]
@@ -21,11 +22,15 @@
                 )}
     {:value :not-found}))
 
+(defn play-card [value]
+  (let [new-board (conj (:board @app-state) value)
+        new-cards (into [] (remove (partial = value) (:cards @app-state)))]
+    (reset! app-state {:cards new-cards :board new-board})))
 
 (defui Cards
-  static om/IQuery
-  (query [this]
-         [:cards])
+  ;; static om/IQuery
+  ;; (query [this]
+  ;;        [:cards])
   Object
   (render [this]
           (let [play-cards (om/props this)]
@@ -37,32 +42,10 @@
                                        :key value
                                        :onClick
                                        (fn [e]
-                                         (om/transact! this `[(play {:value ~value})]))}
+                                         (play-card c))}
                                   value))) play-cards)))))
 
 (def cards (om/factory Cards))
-
-(defui BoardCard ; Super similar to playcard except for action...
-  static om/IQuery
-  (query [this]
-         '[:board])
-  Object
-  (render [this]
-          (let [{:keys [value] :as c} (om/props this)]
-            (dom/li #js {:className "card"
-                         :onClick
-                         (fn [e]
-                           (om/transact! this `[remove ~c]))} value))))
-
-(def boarditem (om/factory BoardCard {:keyfn :value}))
-
-(defui Board
-  Object
-  (render [this]
-          (apply dom/ul #js {:className "hlist"}
-                 (map boarditem (om/props this)))))
-
-(def boardview (om/factory Board))
 
 (defui App
   Object
@@ -74,15 +57,16 @@
                                         ;(dom/div nil (boardview (:board (om/props this))))
                    )))
 
-(defonce reconciler
-  (om/reconciler {:state app-state
-                  :parser (om/parser {:read read :mutate mutate})}))
-
+(def reconciler
+  (om/reconciler {:state app-state}))
 
 (defn init []
-  (if (nil? @app-state)
-    (let [target (gdom/getElement "app")]
-      (om/add-root! reconciler App target)
-      (reset! app-state {:cards (into [] (rest static_cards)) :board [(first static_cards)]}))
-    (.forceUpdate (om/class->any reconciler App))))
+  (om/add-root! reconciler App (gdom/getElement "app")))
+
+;; (defn init []
+;;   (if (nil? @app-state)
+;;     (let [target (gdom/getElement "app")]
+;;       (om/add-root! reconciler App target)
+;;       (reset! app-state {:cards (into [] (rest static_cards)) :board [(first static_cards)]}))
+;;     (.forceUpdate (om/class->any reconciler App))))
 
