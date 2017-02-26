@@ -35,19 +35,28 @@
                              (om/transact! this '[(increment)]))}
                       "Click me!")))))
 
+; I don't really want to create this but I can't find another way to specify the React Key
+(defui PlayCard
+  Object
+  (render [this]
+          (let [{:keys [value] :as c} (om/props this)]
+            (dom/li nil value))))
+
+(def playcard (om/factory PlayCard {:keyfn :value}))
+
 (defui Cards
   Object
   (render [this]
-  (apply dom/ul nil (map (fn [c] (dom/li nil (str (:value c)))) (om/props this))))) ; TODO: keyfn
+          (apply dom/ul nil (map playcard (om/props this)))))
 
 (def cards (om/factory Cards))
 
 (defui ^:once App
   Object
   (render [this]
-          (dom/div {:className "App"}
-                   (dom/h1 {:className "Title"} "Krypto!")
-                   (dom/p {:className "Lead"} "Use the cards")
+          (dom/div #js {:className "App"}
+                   (dom/h1 #js {:className "Title"} "Krypto!")
+                   (dom/p #js {:className "Lead"} "Use the cards")
                    (cards (:cards (om/props this))))))
 
 (defonce reconciler

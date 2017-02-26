@@ -653,3 +653,54 @@ notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.841 seconds.[0m
 notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.817 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.568 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.698 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.733 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.756 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.709 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.802 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.608 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.717 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.683 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.485 seconds.[0m
+[36m----  Could not Analyze  src/cljs/krypto/core.cljs   line:42  column:11  ----[0m
+
+  [1mlet requires an even number of forms in binding vector[0m
+
+  [36m40[0m  [36m  Object[0m
+  [36m41[0m  [36m  (render [this][0m
+  [33m42[0m  [1m          (let [{:keys [value] :as c}][0m
+  [0m  [0m  [33m          ^--- let requires an even number of forms in binding vector[0m
+  [36m43[0m  [36m            (dom/li nil value))))[0m
+  [36m44[0m  [36m[0m
+  [36m45[0m  [36m(def playcard (om/factory PlayCard {:keyfn :value}))[0m
+
+[36m----  Analysis Error : Please see src/cljs/krypto/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.756 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.974 seconds.[0m
+notifying browser that file changed:  target\cljsbuild\public\js\out\krypto\core.js
