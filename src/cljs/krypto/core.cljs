@@ -54,17 +54,37 @@
 
 (def cards-view (om/factory Cards))
 
+(defui BoardCard
+  static om/IQuery
+  (query [this]
+         '[:id :value])
+  Object
+  (render [this]
+          (let [{:keys [id value] :as c} (om/props this)]
+          (dom/li #js {:className "card"} value))))
+
+(def boardcard (om/factory BoardCard {:keyfn :id}))
+
+(defui Board
+  Object
+  (render [this]
+          (let [board-cards (om/props this)]
+            (dom/ul #js {:className "hlist"}
+                    (map boardcard board-cards)))))
+
+(def board-view (om/factory Board))
+
 (defui App
   static om/IQuery
   (query [this]
-         '[:cards])
+         '[:cards :board])
   Object
   (render [this]
           (dom/div #js {:className "App"}
                    (dom/h1 #js {:className "Title"} "Krypto!")
                    (dom/p #js {:className "Lead"} "Use the cards")
                    (dom/div nil (cards-view (:cards (om/props this))))
-                                        ;(dom/div nil (boardview (:board (om/props this))))
+                   (dom/div nil (board-view (:board (om/props this))))
                    )))
 
 (def reconciler
