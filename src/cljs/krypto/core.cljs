@@ -26,7 +26,7 @@
         full-card (some #(and (= id (:id %)) %) (:cards st))
         new-board (conj (:board st) full-card)
         new-cards (into [] (remove (partial = full-card) (:cards st)))]
-    (reset! state {:cards new-cards :board new-board})))
+    {:action #(reset! state {:cards new-cards :board new-board})}))
 
 
 (defui HandCard
