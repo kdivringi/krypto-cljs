@@ -1,5 +1,6 @@
 (ns krypto.core
   (:require [goog.dom :as gdom]
+            [goog.string :as gstring]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]))
 
@@ -34,6 +35,15 @@
         new-cards (conj (:cards st) full-card)
         new-board (into [] (remove (partial = full-card) (:board st)))]
     {:action #(swap! state merge st {:board new-board :cards new-cards})}))
+
+(defmethod mutate 'krypto.core/play-op
+  [{:keys [state]} _ {:keys [op]}]
+  (let [st @state
+        new-card {:id (+ 100 (rand-int 10000))
+                  :type :op
+                  :value op}
+        new-board (conj (:board st) new-card)]
+    {:action #(swap! state merge st {:board new-board})}))
 
 (defui HandCard
   static om/IQuery
@@ -92,6 +102,14 @@
           (dom/div #js {:className "App"}
                    (dom/h1 #js {:className "Title"} "Krypto!")
                    (dom/p #js {:className "Lead"} "Use the cards")
+                   (dom/ul #js {:className "Ops"}
+                           (map (fn [optype, symbol]
+                                  (dom/li #js {:className "btn"
+                                               :onClick (fn [e]
+                                                          (om/transact! this `[(play-op {:op ~optype}) :board]))}
+                                          (gstring/unescapeEntities symbol)))
+                                '("+" "-" "*" "/")
+                                '("+" "&minus;" "&times;" "&divide;")))
                    (dom/div nil (cards-view (:cards (om/props this))))
                    (dom/div nil (board-view (:board (om/props this))))
                    )))
