@@ -28,6 +28,13 @@
         new-cards (into [] (remove (partial = full-card) (:cards st)))]
     {:action #(reset! state {:cards new-cards :board new-board})}))
 
+(defmethod mutate 'krypto.core/take-card
+  [{:keys [state]} _ {:keys [id]}]
+  (let [st @state
+        full-card (some #(and (= id (:id %)) %) (:board st))
+        new-cards (conj (:cards st) full-card)
+        new-board (into [] (remove (partial = full-card) (:board st)))]
+    {:action #(reset! state {:board new-board :cards new-cards})}))
 
 (defui HandCard
   static om/IQuery
@@ -61,7 +68,10 @@
   Object
   (render [this]
           (let [{:keys [id value] :as c} (om/props this)]
-          (dom/li #js {:className "card"} value))))
+            (dom/li #js {:className "card"
+                         :onClick (fn [e]
+                                    (om/transact! this `[(take-card {:id ~id}) :board :cards]))}
+                    value))))
 
 (def boardcard (om/factory BoardCard {:keyfn :id}))
 
