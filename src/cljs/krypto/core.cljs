@@ -15,27 +15,21 @@
 
 (def app-state (atom init-state))
 
-(defn read [{:keys [state query-root]} key params]
-  (let [st @state
-        app-root (om/app-root reconciler)
-        norm-data (om/tree->db app-root st true)
-        result (om/db->tree [query-root] st norm-data)]
-    {:value result}))
+(defn read [{:keys [state]} key params]
+    {:value (get @state key)})
 
 (defmulti mutate om/dispatch)
 
 (defmethod mutate 'krypto.core/play-card
-  [{:keys [state] :as env} {:keys [id] :as keys} params]
-  (let [full-card (get-in state [:card/by-id id])
-        new-board (conj (:board @state) full-card)
-        new-cards (into [] (remove (partial = full-card) (:cards @state)))]
-    (reset! app-state {:cards new-cards :board new-board})))
+  [{:keys [state]} _ {:keys [id]}]
+  (let [st @state
+        full-card (some #(and (= id (:id %)) %) (:cards st))
+        new-board (conj (:board st) full-card)
+        new-cards (into [] (remove (partial = full-card) (:cards st)))]
+    (reset! state {:cards new-cards :board new-board})))
 
 
 (defui HandCard
-  static om/Ident
-  (ident [this {:keys [id]}]
-         [:card/by-id id])
   static om/IQuery
   (query [this]
          '[:id :value])
@@ -45,10 +39,9 @@
           (dom/li #js {:className "card"
                        :onClick
                        (fn [e]
-                         (om/transact! this `[(play-card {:id ~id}) [:board] [:cards]]))}
+                         (om/transact! this `[(play-card {:id ~id}) :board :cards]))}
                   value))))
 
-; ???
 (def handcard (om/factory HandCard {:keyfn :id}))
 
 (defui Cards
@@ -64,8 +57,7 @@
 (defui App
   static om/IQuery
   (query [this]
-         (let [subquery (om/get-query HandCard)]
-           `[{:cards ~subquery}]))
+         '[:cards])
   Object
   (render [this]
           (dom/div #js {:className "App"}
@@ -76,7 +68,7 @@
                    )))
 
 (def reconciler
-  (om/reconciler {:state init-state
+  (om/reconciler {:state app-state
                   :parser (om/parser {:read read :mutate mutate})}))
 
 (defn init []
