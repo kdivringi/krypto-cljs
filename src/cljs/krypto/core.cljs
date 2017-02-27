@@ -2,7 +2,8 @@
   (:require [goog.dom :as gdom]
             [goog.string :as gstring]
             [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]))
+            [om.dom :as dom]
+            [krypto.actions :as actions]))
 
 
 (def init-state {:cards [{:id 1 :type :num :value 3}
@@ -14,36 +15,6 @@
 
 
 (defonce app-state (atom nil))
-
-(defn read [{:keys [state]} key params]
-    {:value (get @state key)})
-
-(defmulti mutate om/dispatch)
-
-(defmethod mutate 'krypto.core/play-card
-  [{:keys [state]} _ {:keys [id]}]
-  (let [st @state
-        full-card (some #(and (= id (:id %)) %) (:cards st))
-        new-board (conj (:board st) full-card)
-        new-cards (into [] (remove (partial = full-card) (:cards st)))]
-    {:action #(swap! state merge st {:cards new-cards :board new-board})}))
-
-(defmethod mutate 'krypto.core/take-card
-  [{:keys [state]} _ {:keys [id]}]
-  (let [st @state
-        full-card (some #(and (= id (:id %)) %) (:board st))
-        new-cards (conj (:cards st) full-card)
-        new-board (into [] (remove (partial = full-card) (:board st)))]
-    {:action #(swap! state merge st {:board new-board :cards new-cards})}))
-
-(defmethod mutate 'krypto.core/play-op
-  [{:keys [state]} _ {:keys [op]}]
-  (let [st @state
-        new-card {:id (+ 100 (rand-int 10000))
-                  :type :op
-                  :value op}
-        new-board (conj (:board st) new-card)]
-    {:action #(swap! state merge st {:board new-board})}))
 
 (defui HandCard
   static om/IQuery
@@ -116,7 +87,7 @@
 
 (def reconciler
   (om/reconciler {:state app-state
-                  :parser (om/parser {:read read :mutate mutate})}))
+                  :parser (om/parser {:read actions/read :mutate actions/mutate})}))
 
 
  (defn init []
