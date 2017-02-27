@@ -3,7 +3,6 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]))
 
-(enable-console-print!)
 
 (def init-state {:cards [{:id 1 :type :num :value 3}
                          {:id 2 :type :num :value 4}
@@ -13,7 +12,7 @@
                  })
 
 
-(def app-state (atom init-state))
+(defonce app-state (atom nil))
 
 (defn read [{:keys [state]} key params]
     {:value (get @state key)})
@@ -26,7 +25,7 @@
         full-card (some #(and (= id (:id %)) %) (:cards st))
         new-board (conj (:board st) full-card)
         new-cards (into [] (remove (partial = full-card) (:cards st)))]
-    {:action #(reset! state {:cards new-cards :board new-board})}))
+    {:action #(swap! state merge st {:cards new-cards :board new-board})}))
 
 (defmethod mutate 'krypto.core/take-card
   [{:keys [state]} _ {:keys [id]}]
@@ -34,7 +33,7 @@
         full-card (some #(and (= id (:id %)) %) (:board st))
         new-cards (conj (:cards st) full-card)
         new-board (into [] (remove (partial = full-card) (:board st)))]
-    {:action #(reset! state {:board new-board :cards new-cards})}))
+    {:action #(swap! state merge st {:board new-board :cards new-cards})}))
 
 (defui HandCard
   static om/IQuery
@@ -84,7 +83,7 @@
 
 (def board-view (om/factory Board))
 
-(defui App
+(defui ^:once App
   static om/IQuery
   (query [this]
          '[:cards :board])
@@ -101,13 +100,11 @@
   (om/reconciler {:state app-state
                   :parser (om/parser {:read read :mutate mutate})}))
 
-(defn init []
-  (om/add-root! reconciler App (gdom/getElement "app")))
 
-;; (defn init []
-;;   (if (nil? @app-state)
-;;     (let [target (gdom/getElement "app")]
-;;       (om/add-root! reconciler App target)
-;;       (reset! app-state {:cards (into [] (rest static_cards)) :board [(first static_cards)]}))
-;;     (.forceUpdate (om/class->any reconciler App))))
+ (defn init []
+   (if (nil? @app-state)
+     (let [target (gdom/getElement "app")]
+       (om/add-root! reconciler App target)
+       (reset! app-state init-state))
+     (.forceUpdate (om/class->any reconciler App))))
 

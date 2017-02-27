@@ -7,7 +7,7 @@
 
 (figwheel/watch-and-reload
   :websocket-url "ws://localhost:3449/figwheel-ws"
-;  :on-jsload core/init
+  :on-jsload core/init
   )
 
 (devtools/install!)
