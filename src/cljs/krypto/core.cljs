@@ -87,7 +87,7 @@
             (dom/ul #js {:className "vlist"}
                     (dom/li #js {:className "eqn eqn-active"
                                  :onClick (fn [e]
-                                            (om/transact! this `[(remove-paren {:id ~(:id leading)}) :cards]))}
+                                            (om/transact! this `[(remove-paren {:id ~(:id leading)}) :parens :cards]))}
                             (actions/display leading)
                             (dom/div #js {:className "small-detail"} "(Remove)"))))
             nil)))
