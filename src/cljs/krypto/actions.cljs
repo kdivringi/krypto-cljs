@@ -47,8 +47,8 @@
   value)
 
 (defmethod display :op
-  [{:keys [value]}]
-  (value {:plus "+" :minus "-" :times "*" :divide "/"}))
+  [card]
+  ((:value card) {:plus "+" :minus "-" :times "*" :divide "/"}))
 
 
                                         ;---------------- Actions -----------------
@@ -61,12 +61,12 @@
 (defmethod mutate 'krypto.core/play-card
   [{:keys [state]} _ {:keys [id]}]
   ; The board must be empty or the last item on the board must be an :op
-  (when (or (= 0 (count (:board @state))) (= :op (:type (last (:board @state))))) (
+  (when (or (= 0 (count (:board @state))) ) ;(= :op (:type (last (:board @state)))))
     (let [st @state
         full-card (retrieve-by-id id (:cards st))
         new-board (conj (:board st) full-card)
         new-cards (into [] (remove (partial = full-card) (:cards st)))]
-    {:action #(swap! state merge st {:cards new-cards :board new-board})}))))
+      {:action #(swap! state merge st {:cards new-cards :board new-board})})))
 
 (defmethod mutate 'krypto.core/take-card
   [{:keys [state]} _ {:keys [id]}]

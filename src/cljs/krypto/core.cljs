@@ -27,7 +27,7 @@
                        :onClick
                        (fn [e]
                          (om/transact! this `[(play-card {:id ~id}) :board :cards]))}
-                  value))))
+                  (actions/display c)))))
 
 (def handcard (om/factory HandCard {:keyfn :id}))
 
@@ -51,7 +51,7 @@
             (dom/li #js {:className "card"
                          :onClick (fn [e]
                                     (om/transact! this `[(take-card {:id ~id}) :board :cards]))}
-                    value))))
+                    (actions/display c)))))
 
 (def boardcard (om/factory BoardCard {:keyfn :id}))
 
@@ -74,12 +74,13 @@
                    (dom/h1 #js {:className "Title"} "Krypto!")
                    (dom/p #js {:className "Lead"} "Use the cards")
                    (dom/ul #js {:className "Ops"}
-                           (map (fn [optype, symbol]
-                                  (dom/li #js {:className "btn"
-                                               :onClick (fn [e]
-                                                          (om/transact! this `[(play-op {:op ~optype}) :board]))}
-                                          (gstring/unescapeEntities symbol)))
-                                '("+" "-" "*" "/")
+                            (map (fn [optype, symbol]
+                                   (dom/li #js {:className "btn"
+                                                :onClick (fn [e]
+                                                           (om/transact! this
+                                                                         `[(play-op {:op ~optype}) :board :cards]))}
+                                           (gstring/unescapeEntities symbol)))
+                                '(:plus :minus :times :divide)
                                 '("+" "&minus;" "&times;" "&divide;")))
                    (dom/div nil (cards-view (:cards (om/props this))))
                    (dom/div nil (board-view (:board (om/props this))))
