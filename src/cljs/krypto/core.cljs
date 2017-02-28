@@ -12,6 +12,7 @@
                          {:id 4 :type :num :value 10}]
                  :board [{:id 5 :type :num :value 12}]
                  :goal {:id 6 :type :num :value 9}
+                 :parens []
                  })
 
 
@@ -75,10 +76,28 @@
 
 (def board-view (om/factory Board))
 
+(defui Eqs
+  static om/IQuery
+  (query [this]
+         '[:parens])
+  Object
+  (render [this]
+          (if (not= 0 (count (om/props this)))
+            (let [leading (last (om/props this))]
+            (dom/ul #js {:className "vlist"}
+                    (dom/li #js {:className "eqn eqn-active"
+                                 :onClick (fn [e]
+                                            (om/transact! this `[(remove-paren {:id ~(:id leading)}) :cards]))}
+                            (actions/display leading)
+                            (dom/div #js {:className "small-detail"} "(Remove)"))))
+            nil)))
+
+(def eq-view (om/factory Eqs))
+
 (defui ^:once App
   static om/IQuery
   (query [this]
-         '[:cards :board :goal])
+         '[:cards :board :goal :parens])
   Object
   (render [this]
           (dom/div #js {:className "App"}
@@ -95,6 +114,7 @@
                                 '("+" "&minus;" "&times;" "&divide;")))
                    (dom/div nil (cards-view (:cards (om/props this))))
                    (dom/div nil (board-view (:board (om/props this))))
+                   (dom/div nil (eq-view (:parens (om/props this))))
                    (dom/ul #js {:className "hlist"}
                            (dom/li nil (str "Target: " (actions/display (:goal (om/props this)))
                                             " | Score: "

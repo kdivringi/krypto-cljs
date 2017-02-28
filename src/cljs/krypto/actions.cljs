@@ -114,8 +114,22 @@
         new-card {:id (next-free-id st)
                   :type :paren
                   :value (:board st)}
-        new-cards (conj (:cards st) new-card)]
-    {:action #(swap! state merge st {:board new-board :cards new-cards})}))
+        new-cards (conj (:cards st) new-card)
+        new-parens (conj (:parens st) new-card)]
+    {:action #(swap! state merge st {:board new-board :cards new-cards :parens new-parens})}))
+
+(defmethod mutate 'krypto.core/remove-paren
+  [{:keys [state]} _ {:keys [id]}]
+  (if (some #(= id (:id %)) (:board @state))
+    {:action #(identity 1)}
+    (let [st @state
+        full-card (retrieve-by-id id (:parens st))
+        new-cards (into [] (concat
+                   (remove #(= % full-card) (:cards st))
+                   (remove #(= :op (:type %)) (:value full-card))))
+        new-parens (butlast (:parens st))]
+      {:action #(swap! state merge st {:cards new-cards :parens new-parens})})
+    ))
 
 ;; (defn add-board)
 
