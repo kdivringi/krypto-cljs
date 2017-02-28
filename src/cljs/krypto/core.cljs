@@ -58,10 +58,19 @@
 (def boardcard (om/factory BoardCard {:keyfn :id}))
 
 (defui Board
+  static om/IQuery
+  (query [this]
+         '[:board])
   Object
   (render [this]
           (let [board-cards (om/props this)]
-            (dom/ul #js {:className "hlist"}
+            (apply
+             dom/ul #js {:className "hlist"}
+             (if-let [leading (last (om/props this))]
+               (when (not= :op (:type leading))
+                 (dom/li #js {:className "card"
+                              :onClick (fn [e]
+                                         (om/transact! this `[(make-paren) :board :cards]))} "(?):")))
                     (map boardcard board-cards)))))
 
 (def board-view (om/factory Board))

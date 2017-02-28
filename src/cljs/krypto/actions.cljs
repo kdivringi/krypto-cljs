@@ -6,8 +6,8 @@
 (defn retrieve-by-id [id loc]
   (some #(and (= id (:id %)) %) loc))
 
-(defn next-free-id [loc & locs]
-  (let [everything (conj locs loc)]
+(defn next-free-id [st]
+  (let [everything [(:board st) (:cards st) [(:goal st)]]]
     (+ 1 (apply max (flatten
                      (map
                      (fn [col] (map :id col)) everything))))))
@@ -25,7 +25,7 @@
   (value {:plus + :minus - :times * :divide /}))
 
 
-(defn add-board ; No operator precedence
+(defn add-board ; No operator precedence, so sue me
   ([brd]
    (if (= 0 (count brd))
      0
@@ -42,6 +42,10 @@
             others (rest (rest brd))]
         (recur others new-current))))))
 
+(defmethod calculate :paren
+  [{:keys [value]}]
+  (add-board value))
+
 (defmulti display :type)
 
 (defmethod display :num
@@ -51,6 +55,10 @@
 (defmethod display :op
   [card]
   ((:value card) {:plus "+" :minus "-" :times "*" :divide "/"}))
+
+(defmethod display :paren
+  [{:keys [value]}]
+  (str "(" (apply str (map display value)) ")"))
 
 (defmethod display :default ; For whatever reason I keep getting erros in the console log about this?
   [something]
@@ -92,12 +100,22 @@
   [{:keys [state]} _ {:keys [op]}]
   (let [st @state]
     (if (and (not= 0 (count (:board st))) (not= :op (:type (last (:board st)))))
-      (let [new-card {:id (next-free-id (:board st) (:cards st))
+      (let [new-card {:id (next-free-id st)
                       :type :op
                       :value op}
         new-board (conj (:board st) new-card)]
         {:action #(swap! state merge st {:board new-board})})
       {:action #(identity 1)})))
+
+(defmethod mutate 'krypto.core/make-paren
+  [{:keys [state]} _ _]
+  (let [st @state
+        new-board []
+        new-card {:id (next-free-id st)
+                  :type :paren
+                  :value (:board st)}
+        new-cards (conj (:cards st) new-card)]
+    {:action #(swap! state merge st {:board new-board :cards new-cards})}))
 
 ;; (defn add-board)
 
