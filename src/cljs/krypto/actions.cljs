@@ -24,15 +24,17 @@
   [{:keys [value]}]
   (value {:plus + :minus - :times * :divide /}))
 
-(defn add-board
+
+(defn add-board ; No operator precedence
   ([brd]
-  (add-board brd 0))
+   (if (= 0 (count brd))
+     0
+     (add-board (rest brd) (calculate (first brd)))))
   ([brd current]
   (let [len (count brd)]
     (cond
       (= len 0) current
-      (= len 1) (+ current (calculate (first brd)))
-      (even? len) (add-board (butlast brd))
+      (odd? len) (add-board (butlast brd) current)
       :else
       (let [one (calculate (first brd))
             two (calculate (second brd))
