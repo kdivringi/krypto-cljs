@@ -52,6 +52,10 @@
   [card]
   ((:value card) {:plus "+" :minus "-" :times "*" :divide "/"}))
 
+(defmethod display :default ; For whatever reason I keep getting erros in the console log about this?
+  [something]
+  nil)
+
 
                                         ;---------------- Actions -----------------
 
@@ -63,33 +67,37 @@
 (defmethod mutate 'krypto.core/play-card
   [{:keys [state]} _ {:keys [id]}]
   ; The board must be empty or the last item on the board must be an :op
-  (when (or (= 0 (count (:board @state)))  (= :op (:type (last (:board @state)))))
-    (let [st @state
-        full-card (retrieve-by-id id (:cards st))
-        new-board (conj (:board st) full-card)
-        new-cards (into [] (remove (partial = full-card) (:cards st)))]
-      {:action #(swap! state merge st {:cards new-cards :board new-board})})))
+  (let [st @state]
+    (if (or (= 0 (count (:board st)))  (= :op (:type (last (:board st)))))
+      (let [full-card (retrieve-by-id id (:cards st))
+            new-board (conj (:board st) full-card)
+            new-cards (into [] (remove (partial = full-card) (:cards st)))]
+        (if (nil? full-card) {:action #(identity 1)}
+            {:action #(swap! state merge st {:cards new-cards :board new-board})}))
+      {:action #(identity 1)}))) ; Does it cause errors if you don't return something here?
 
 (defmethod mutate 'krypto.core/take-card
   [{:keys [state]} _ {:keys [id]}]
   (let [st @state
         full-card (retrieve-by-id id (:board st))]
-    (when (= (last (:board st)) full-card) ; Can only remove last card from board
+    (if (= (last (:board st)) full-card) ; Can only remove last card from board
       (let [new-cards (if (not= (:type full-card) :op)
                         (conj (:cards st) full-card)
                         (:cards st))
             new-board (into [] (remove (partial = full-card) (:board st)))]
-    {:action #(swap! state merge st {:board new-board :cards new-cards})}))))
+        {:action #(swap! state merge st {:board new-board :cards new-cards})})
+      {:action #(identity 1)})))
 
 (defmethod mutate 'krypto.core/play-op
   [{:keys [state]} _ {:keys [op]}]
   (let [st @state]
-    (when (not= :op (:type (last (:board st))))
+    (if (and (not= 0 (count (:board st))) (not= :op (:type (last (:board st)))))
       (let [new-card {:id (next-free-id (:board st) (:cards st))
                       :type :op
                       :value op}
         new-board (conj (:board st) new-card)]
-    {:action #(swap! state merge st {:board new-board})}))))
+        {:action #(swap! state merge st {:board new-board})})
+      {:action #(identity 1)})))
 
 ;; (defn add-board)
 

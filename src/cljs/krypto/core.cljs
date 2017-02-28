@@ -11,6 +11,7 @@
                          {:id 3 :type :num :value 8}
                          {:id 4 :type :num :value 10}]
                  :board [{:id 5 :type :num :value 12}]
+                 :goal {:id 6 :type :num :value 9}
                  })
 
 
@@ -19,7 +20,7 @@
 (defui HandCard
   static om/IQuery
   (query [this]
-         '[:id :value])
+         '[:id :value :type])
   Object
   (render [this]
           (let [{:keys [id value] :as c} (om/props this)]
@@ -35,7 +36,8 @@
   Object
   (render [this]
           (let [play-cards (om/props this)]
-          (apply dom/ul #js {:className "hlist"}
+            (apply
+             dom/ul #js {:className "hlist"}
                  (dom/li #js {:className "card-first"} "Cards:")
                  (map handcard play-cards)))))
 
@@ -44,7 +46,7 @@
 (defui BoardCard
   static om/IQuery
   (query [this]
-         '[:id :value])
+         '[:id :value :type])
   Object
   (render [this]
           (let [{:keys [id value] :as c} (om/props this)]
@@ -67,7 +69,7 @@
 (defui ^:once App
   static om/IQuery
   (query [this]
-         '[:cards :board])
+         '[:cards :board :goal])
   Object
   (render [this]
           (dom/div #js {:className "App"}
@@ -84,6 +86,10 @@
                                 '("+" "&minus;" "&times;" "&divide;")))
                    (dom/div nil (cards-view (:cards (om/props this))))
                    (dom/div nil (board-view (:board (om/props this))))
+                   (dom/ul #js {:className "hlist"}
+                           (dom/li nil (str "Target: " (actions/display (:goal (om/props this)))
+                                            " | Score: "
+                                            (actions/add-board (:board (om/props this))))))
                    )))
 
 (def reconciler
