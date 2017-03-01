@@ -72,31 +72,38 @@
 
 (defmulti mutate om/dispatch)
 
+; I'm not certain why but it seems I need to check these predicates in the UI anonymous functions
+(defn can-play? [state]
+  "The board must be empty or the last item on the board must be an :op"
+  (let [st @state]
+    (or (= 0 (count (:board st)))  (= :op (:type (last (:board st)))))))
+
 (defmethod mutate 'krypto.core/play-card
   [{:keys [state]} _ {:keys [id]}]
-  ; The board must be empty or the last item on the board must be an :op
-  (let [st @state]
-    (if (or (= 0 (count (:board st)))  (= :op (:type (last (:board st)))))
-      (let [full-card (retrieve-by-id id (:cards st))
-            new-board (conj (:board st) full-card)
-            new-cards (into [] (remove (partial = full-card) (:cards st)))]
-        (if (nil? full-card) {:action #(identity 1)}
-            {:action #(swap! state merge st {:cards new-cards :board new-board})}))
-      {:action #(identity 1)}))) ; Does it cause errors if you don't return something here?
+  (let [st @state
+        full-card (retrieve-by-id id (:cards st))
+        new-board (conj (:board st) full-card)
+        new-cards (into [] (remove (partial = full-card) (:cards st)))]
+    {:action #(swap! state merge st {:cards new-cards :board new-board})}))
+
+(defn can-take? [state id]
+  "Can only remove last card from board"
+  (let [st @state
+        full-card (retrieve-by-id id (:board st))]
+    (= (last (:board st)) full-card)
+  ))
 
 (defmethod mutate 'krypto.core/take-card
   [{:keys [state]} _ {:keys [id]}]
   (let [st @state
-        full-card (retrieve-by-id id (:board st))]
-    (if (= (last (:board st)) full-card) ; Can only remove last card from board
-      (let [new-cards (if (not= (:type full-card) :op)
+        full-card (retrieve-by-id id (:board st))
+        new-cards (if (not= (:type full-card) :op)
                         (conj (:cards st) full-card)
                         (:cards st))
-            new-board (into [] (remove (partial = full-card) (:board st)))]
-        {:action #(swap! state merge st {:board new-board :cards new-cards})})
-      {:action #(identity 1)})))
+        new-board (into [] (remove (partial = full-card) (:board st)))]
+        {:action #(swap! state merge st {:board new-board :cards new-cards})}))
 
-(defmethod mutate 'krypto.core/play-op
+(defmethod mutate 'krypto.core/play-op ; This doesn't have issues, not implementing the predicate atm
   [{:keys [state]} _ {:keys [op]}]
   (let [st @state]
     (if (and (not= 0 (count (:board st))) (not= :op (:type (last (:board st)))))
@@ -127,7 +134,7 @@
         new-cards (into [] (concat
                    (remove #(= % full-card) (:cards st))
                    (remove #(= :op (:type %)) (:value full-card))))
-        new-parens (butlast (:parens st))]
+        new-parens (into [] (butlast (:parens st)))]
       {:action #(swap! state merge st {:cards new-cards :parens new-parens})})
     ))
 

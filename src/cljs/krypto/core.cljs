@@ -28,7 +28,8 @@
           (dom/li #js {:className "card"
                        :onClick
                        (fn [e]
-                         (om/transact! this `[(play-card {:id ~id}) :board :cards]))}
+                         (when (actions/can-play? app-state)
+                           (om/transact! this `[(play-card {:id ~id}) :board :cards])))}
                   (actions/display c)))))
 
 (def handcard (om/factory HandCard {:keyfn :id}))
@@ -53,7 +54,8 @@
           (let [{:keys [id value] :as c} (om/props this)]
             (dom/li #js {:className "card"
                          :onClick (fn [e]
-                                    (om/transact! this `[(take-card {:id ~id}) :board :cards]))}
+                                    (when (actions/can-take? app-state id)
+                                      (om/transact! this `[(take-card {:id ~id}) :board :cards])))}
                     (actions/display c)))))
 
 (def boardcard (om/factory BoardCard {:keyfn :id}))

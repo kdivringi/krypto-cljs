@@ -15,7 +15,7 @@
                  [mount "0.1.11"]
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.473" :scope "provided"]
-                 [org.omcljs/om "1.0.0-alpha34"]
+                 [org.omcljs/om "1.0.0-alpha48"]
                  [org.clojure/tools.cli "0.3.5"]
                  [org.clojure/tools.logging "0.3.1"]
                  [org.postgresql/postgresql "9.4.1212"]
